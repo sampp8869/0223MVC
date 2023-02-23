@@ -1,0 +1,91 @@
+@model IEnumerable<Coupon.Models.TCoupon>
+
+@{
+	ViewData["Title"] = "List";
+}
+
+---------------------------------這裡----------------------------
+<main>
+
+    <div class="container-fluid px-4">
+		<h1 class="mt-4">
+			<h1>優惠券管理</h1>
+		</h1>
+		<p>
+			<a asp-action="Create">新增優惠券</a>
+		</p>
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+---------------------------------這裡----------------------------
+		<tr>
+			<th>
+				序號
+			</th>
+			<th>
+				優惠券代碼
+			</th>
+			<th>
+				使用開始時間
+			</th>
+			<th>
+				使用結束時間
+			</th>
+			<th>
+				優惠比例
+			</th>
+			<th>
+				可使用次數
+			</th>
+			<th>
+				已使用次數
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			int count = 0;
+			foreach (var item in Model)
+			{
+				count++;
+				<tr>
+					<td>
+						@count
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FCode)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FStartDate)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FEndDate)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FRatio)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FAvailableTimes)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FUsedTimes)
+					</td>
+					<td>
+						@Html.ActionLink("修改", "Edit", new { id=item.FSid  }) |
+						@Html.ActionLink("刪除", "Delete","Coupon", new { id=item.FSid },new{onclick = "return confirm('確定刪除?')"})
+					</td>
+				</tr>
+			}
+		}
+---------------------------------這裡----------------------------
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</main>
+
+---------------------------------這裡----------------------------

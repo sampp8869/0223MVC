@@ -1,0 +1,173 @@
+﻿@model IEnumerable<FinalProject.Models.TProvider>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">供應商列表</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">新增資料</a>
+    </p>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        序
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FCompanyName)
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.FPassword)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FTaxId)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FFax)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FOwnerName)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FOwnerTel)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FOwnerMobile)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FOwnerEmail)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.FContactName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FContactTel)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FContactMobile)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FContactEmail)
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.FAddress)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FBankName)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FBankDivisionName)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FBankAccountNumber)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FBankAccountName)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.FBlackList)
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.FRemark)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FCreationDate)
+                    </th>
+                    <th>
+                    @Html.DisplayNameFor(model => model.FLastUpdateDate)
+                    </th>*@
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 0;
+                    foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FCompanyName)
+                            </td>
+                            @*<td>
+                    @Html.DisplayFor(modelItem => item.FPassword)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FTaxId)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FFax)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FOwnerName)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FOwnerTel)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FOwnerMobile)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FOwnerEmail)
+                    </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FContactName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FContactTel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FContactMobile)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FContactEmail)
+                            </td>
+                            @*<td>
+                    @Html.DisplayFor(modelItem => item.FAddress)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FBankName)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FBankDivisionName)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FBankAccountNumber)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FBankAccountName)
+                    </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FBlackList)
+                            </td>
+                            @*<td>
+                    @Html.DisplayFor(modelItem => item.FRemark)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FCreationDate)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.FLastUpdateDate)
+                    </td>*@
+                            <td>
+                                @Html.ActionLink("詳細", "Details", new { id = item.FId }, new { @class="btn btn-secondary" })
+                                @Html.ActionLink("修改", "Edit", new { id = item.FId }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("刪除", "Delete", "Provider", new { id = item.FId }, new { onclick = "return confirm('確定要刪除?\\n\\r刪除後將無法復原!')", @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

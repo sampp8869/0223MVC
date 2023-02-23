@@ -1,0 +1,14 @@
+﻿using System.ComponentModel;
+
+namespace FinalProject.ViewModels
+{
+    public class COrderDetailListViewModel
+    {
+        public int OrderID { get; set; }
+        public string CustomerLastName { get; set; }
+        public string CustomerFirstName { get; set; }
+        public string ProductName { get; set; }
+        public DateTime? OrderCheckedDate { get; set; }
+
+    }    
+}

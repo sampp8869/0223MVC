@@ -1,0 +1,189 @@
+﻿@model FinalProject.ViewModels.CCustomerViewModel
+
+@{
+    ViewData["Title"] = "新增會員";
+}
+<div class="container-fluid px-4">
+    <h1 class="mt-4">
+        新增會員
+    </h1>
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row ms-2">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FLastName" class="control-label"></label>
+                        <input asp-for="FLastName" class="form-control" />
+                        <span asp-validation-for="FLastName" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FFirstName" class="control-label"></label>
+                        <input asp-for="FFirstName" class="form-control" />
+                        <span asp-validation-for="FFirstName" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FGender" class="control-label"></label>
+                        <select asp-for="FGender" class="form-control">
+                            <option value=0>未指定</option>
+                            <option value=1>男性</option>
+                            <option value=2>女性</option>
+                        </select>
+                        <span asp-validation-for="FGender" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FTel" class="control-label"></label>
+                        <input asp-for="FTel" class="form-control" />
+                        <span asp-validation-for="FTel" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FMobile" class="control-label"></label>
+                        <input asp-for="FMobile" class="form-control" />
+                        <span asp-validation-for="FMobile" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FEmail" class="control-label"></label>
+                        <input asp-for="FEmail" class="form-control" />
+                        <span asp-validation-for="FEmail" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FPassword" class="control-label"></label>
+                        <input asp-for="FPassword" class="form-control" />
+                        <span asp-validation-for="FPassword" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FBirthDate" class="control-label"></label>
+                        <input asp-for="FBirthDate" class="form-control" />
+                        <span asp-validation-for="FBirthDate" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FPoint" class="control-label"></label>
+                        <input asp-for="FPoint" class="form-control" />
+                        <span asp-validation-for="FPoint" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="FBlackList" /> @Html.DisplayNameFor(model => model.FBlackList)
+                        </label>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="FRemark" class="control-label"></label>
+                        <textarea asp-for="FRemark" class="form-control" style="white-space:pre" rows="10"></textarea>
+                        <span asp-validation-for="FRemark" class="text-danger"></span>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <input type="submit" value="新增" class="btn btn-success" />
+                        <a class="btn btn-danger" asp-action="List">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+ @*   <script>
+        document.getElementById("idName").addEventListener("blur", checkName);
+        document.getElementById("idPwd").addEventListener("blur", checkPwd);
+        document.getElementById("idDate").addEventListener("blur", checkDate);
+        document.getElementById("idna").style.color = "red";
+        document.getElementById("idsp").style.color = "red";
+        document.getElementById("idda").style.color = "red";
+
+        function checkName() {
+            let thePwdObjVal = document.getElementById("idName").value;
+            let na = document.getElementById("idna");
+            let thePwdObjValLen = thePwdObjVal.length;
+            let re = /^[\u4e00-\u9fa5]+$/
+
+            if (thePwdObjVal == "")
+                na.innerHTML = "<img src='Images/error.png'/>姓名不可空白";
+
+            else if (thePwdObjValLen >= 2) {
+                if (re.test(thePwdObjVal)) {
+                    na.style.color = "green";
+                    na.innerHTML = "正確";
+                }
+                else
+                    na.innerHTML = "<img src='Images/error.png'/>姓名必須都為中文";
+            }
+            else
+                na.innerHTML = "<img src='Images/error.png'/>最少兩個字";
+
+        }
+
+        function checkPwd() {
+            let thePwdObj = document.getElementById("idPwd");
+            let thePwdObjVal = thePwdObj.value;
+            let sp = document.getElementById("idsp");
+            let thePwdObjValLen = thePwdObjVal.length;
+            let ch, flag1 = false, flag2 = false, flag3 = false;
+            let re = /^[\!\@\#\$\%\^\&\*]+$/
+            if (thePwdObjVal == "")
+                sp.innerHTML = "<img src='Images/error.png'/>密碼不可空白";
+            else if (thePwdObjValLen >= 6) {
+                for (let i = 0; i < thePwdObjValLen; i++) {
+                    ch = thePwdObjVal.charAt(i).toUpperCase();
+                    if (ch >= "A" && ch <= "Z")
+                        flag1 = true;
+                    else if (ch >= "0" && ch <= "9")
+                        flag2 = true;
+                    else if (re.test(ch))
+                        flag3 = true;
+                    if (flag1 && flag2 && flag3) break;
+                }
+                if (flag1 && flag2 && flag3) {
+                    sp.style.color = "green";
+                    sp.innerHTML = "符合密碼規則";
+                }
+                else
+                    sp.innerHTML = "<img src='Images/error.png'/>不符合密碼規則";
+            }
+
+            else
+                sp.innerHTML = "<img src='Images/error.png'/>密碼最少六位"
+
+        }
+
+        function checkDate() {
+            let DateObjVal = document.getElementById("idDate").value;
+            let sp = document.getElementById("idda");
+            let d = new Date(DateObjVal);
+            let theyear = d.getFullYear();
+            let themonth = d.getMonth() + 1;
+            let theday = d.getDate();
+
+            let checkDate = `${theyear}/${themonth}/${theday}`;
+            if (DateObjVal == "")
+                sp.innerHTML = "<img src='Images/error.png'/>不可為空白";
+            else if (checkDate == DateObjVal) {
+                sp.style.color = "green";
+                sp.innerHTML = "日期正確";
+            }
+            else
+                sp.innerHTML = "<img src='Images/error.png'/>無此日期";
+
+
+        }
+
+
+
+    </script>*@

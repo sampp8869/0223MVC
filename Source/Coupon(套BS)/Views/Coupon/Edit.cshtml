@@ -1,0 +1,76 @@
+﻿@model Coupon.Models.TCoupon
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">
+            <h1>修改優惠券</h1>
+
+            <h4>修改優惠券資料</h4>
+        </h1>
+
+    </div>
+
+    <div class="card-body">
+
+        <thead>
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group" >
+                            <label asp-for="FSid" class="control-label"></label>
+                            <input asp-for="FSid" class="form-control" readonly />
+                            <span asp-validation-for="FSid" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FCode" class="control-label"></label>
+                            <input asp-for="FCode" class="form-control" readonly />
+                            <span asp-validation-for="FCode" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FStartDate" class="control-label"></label>
+                            <input asp-for="FStartDate" class="form-control" />
+                            <span asp-validation-for="FStartDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FEndDate" class="control-label"></label>
+                            <input asp-for="FEndDate" class="form-control" />
+                            <span asp-validation-for="FEndDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FRatio" class="control-label"></label>
+                            <input asp-for="FRatio" class="form-control" />
+                            <span asp-validation-for="FRatio" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FAvailableTimes" class="control-label"></label>
+                            <input asp-for="FAvailableTimes" class="form-control" />
+                            <span asp-validation-for="FAvailableTimes" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FUsedTimes" class="control-label"></label>
+                            <input asp-for="FUsedTimes" class="form-control" />
+                            <span asp-validation-for="FUsedTimes" class="text-danger"></span>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="submit" value="儲存" class="btn btn-success" />                      
+                            <a asp-action="List" class="btn btn-danger">返回</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+      
+
+            @section Scripts {
+                @{
+                    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                }
+            }
+                </tbody>
+        </div>
+    </main>

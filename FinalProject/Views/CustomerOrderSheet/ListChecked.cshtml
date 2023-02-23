@@ -1,0 +1,85 @@
+﻿@model IEnumerable<FinalProject.Models.TCustomerOrderSheet>
+
+@{
+    ViewData["Title"] = "已確認訂單";
+}
+
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">
+        已確認訂單
+    </h1>
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        序號
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FCustomerId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FCouponCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FCreationDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FCheckedDate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 0;
+                    foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FCustomerId)
+                            </td>
+                            <td>
+                                @{
+                                    if(item.FCouponCode == null)
+                                    {
+                                        @Html.Label("未使用")
+                                    }
+                                    else
+                                    {
+                                        @Html.DisplayFor(modelItem => item.FCouponCode)
+                                    }
+                                }
+                                
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FCreationDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FCheckedDate)
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
